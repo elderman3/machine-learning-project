@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb}
+
+\title{Monte Carlo Particle Simulation}
+\author{Elia Mäki, Maria Seppänen }
+% \date{September 2025}
+\begin{document}
+
+\maketitle
+\section{Introduction}
+For this project, we want to develop a machine learning algorithm to classify terrain based on aerial data gathered from satellites. Terrain classification includes e.g. forest, farmland, water. This recognition is useful e.g. for tracking deforestation, wildfires or floods.
+
+The structure of this report is as follows: First, the machine learning problem is introduced in Problem Foundation and the inputs described. Then, in the Methods section, the input data and its processing is explained more precisely and the machine learning methods used are described.  
+
+\section{Problem Formulation}
+We model land-cover classification at a 10\,m resolution using data from Sentinel-2 Level-2A surface reflectance dataset. Each data point is 10\,m $\times$ 10\,m pixel represented by a 6-D feature vector associated to it. The vector contains the following information:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|c|}\hline
+Band & Description & Native pixel size \\\hline
+B2   & Blue (490\,nm) & 10\,m \\\hline
+B3   & Green (560\,nm) & 10\,m \\\hline
+B4   & Red (665\,nm) & 10\,m \\\hline
+B8   & Near-Infrared (842\,nm) & 10\,m \\\hline
+B11  & SWIR1 (1610\,nm) & 20\,m \\\hline
+B12  & SWIR2 (2190\,nm) & 20\,m \\\hline
+    \end{tabular}
+    \caption{Sentinel-2 bands used. B11 and B12 are resampled to 10\,m.}
+    \label{tab:s2bands}
+\end{table}
+
+Blue and Red aid water and vegetation discrimination, Green captures the vegetation reflectance peak,
+NIR (Near infrared) captures biomass and canopy structure, and SWIR (Shortwave Infrared) bands respond to leaf water content, soil moisture, and dryness.
+
+
+We use ESA WorldCover (10\,m) as supervision. Classes and codes:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|l|}\hline
+        Value & Class \\\hline
+          10 & Tree Cover\\\hline
+          20 & Shrubland\\\hline
+          30 & Grassland\\\hline
+          40 & Cropland\\\hline
+          50 & Built-up\\\hline
+          60 & Bare / Sparse Vegetation\\\hline
+          70 & Snow and Ice\\\hline
+          80 & Permanent water\\\hline
+          90 & Herbaceous wetland\\\hline
+          95 & Mangroves\\\hline
+          100 & Moss and Lichen\\\hline
+    \end{tabular}
+    \caption{ESA WorldCover target classes.}
+    \label{tab:worldcover}
+\end{table}
+
+
+
+\section{Methods}
+The model can be described as $f:\mathbb{R}^{6}\rightarrow \{0,1,2,... 10\}$ where the Value-parameter has been converted to a contiguous distribution. These features were chosen as they were considered defining features of the dataset. The amount different parameters was minimized to make the initial model as simple as possible. 
+
+Both datasets used can be accessed without cost on the Google Earth Engine (EE) and through the EE API, that the code will also use. To use the datasets fully, B11 and B12 from the input data must be upscaled to the smaller pixel size of 10\,m. Temporal harmonizing must be performed to match both datasets. 
+
+The initial choice of model will be KNN classification with a 0/1 loss model. This matches the goal of minimizing misclassifications and is therefore the best and obvious choice. KNN was chosen as it is easy to implement and works directly on the feature space.
+
+For the validation process, a subset of the Earths surface will be used as training data e.g. one country or continent. Consideration should be given to the fact that the training set should include all terrain classifications so that the model learns the characteristics of each terrain type. 
+
+
+\section.{Misc}
+If you  want to run the 
+\end{document}
