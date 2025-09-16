@@ -2,8 +2,8 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath,amssymb}
 
-\title{Monte Carlo Particle Simulation}
-\author{Elia Mäki, Maria Seppänen }
+\title{Machine Learning Project}
+\author{Elia Mäki 100563573, Maria Seppänen 1019333}
 % \date{September 2025}
 \begin{document}
 
@@ -57,7 +57,7 @@ We use ESA WorldCover (10\,m) as supervision. Classes and codes:
     \label{tab:worldcover}
 \end{table}
 
-
+All data has been sourced from Google Earth Engine, who have gotten the data sets from NASA and the ESA from their satellites Sentinel-1 and Sentinel-2. For more info, refer to https://developers.google.com/earth-engine/datasets/catalog.
 
 \section{Methods}
 The model can be described as $f:\mathbb{R}^{6}\rightarrow \{0,1,2,... 10\}$ where the Value-parameter has been converted to a contiguous distribution. These features were chosen as they were considered defining features of the dataset. The amount different parameters was minimized to make the initial model as simple as possible. 
