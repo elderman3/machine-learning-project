@@ -11,7 +11,7 @@ def colorize(arr):
     for v,c in PALETTE.items(): rgb[arr==v]=c
     return rgb
 
-paths = sorted(glob.glob('data/gee_exports_v5/*_mosaic.tif'))[:6]
+paths = sorted(glob.glob('data/*test_mosaic.tif'))
 for p in paths:
     with rasterio.open(p) as ds:
         rgb = np.stack([ds.read(3), ds.read(2), ds.read(1)], axis=2).astype('float32')/10000.0  # B4,B3,B2

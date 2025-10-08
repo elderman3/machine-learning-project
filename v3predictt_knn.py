@@ -32,4 +32,4 @@ def predict(mosaic_path, model_path, out_tif, out_png):
     plt.figure(figsize=(8,8)); plt.imshow(rgb); plt.axis('off'); plt.tight_layout(); plt.savefig(out_png, dpi=150); plt.close()
 
 # Example:
-# predict('data/gee_exports_v5/netherlands_agri_val_mosaic.tif', 'knn_worldcover.joblib', 'pred_knn_val.tif', 'pred_knn_val.png')
+predict('data/us_kansas_grass_val_mosaic.tif', 'knn_worldcover.joblib', 'pred_knn_val.tif', 'pred_knn_val.png')

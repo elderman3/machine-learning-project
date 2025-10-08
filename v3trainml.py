@@ -9,7 +9,7 @@ from joblib import dump
 import torch, torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 
-DATA = 'dataset_worldcover_v5.npz'
+DATA = 'dataset_worldcover_v6.npz'
 BATCH = 64
 EPOCHS = 20
 LR = 1e-3
