@@ -4,6 +4,7 @@
 
 import math, argparse, pandas as pd, numpy as np
 from collections import defaultdict
+import warnings
 
 # ---------- KNN ----------
 def run_knn(csv_path):
@@ -169,6 +170,6 @@ if __name__ == "__main__":
     ap.add_argument("--patch", type=int, default=15)
     args = ap.parse_args()
     """
-
-    #run_knn("s2_worldcover_2021_FR_100tiles_allpixels-2.csv")
-    run_cnn("s2_worldcover_2021_FR_100tiles_allpixels-2.csv")
+    warnings.filterwarnings("ignore")
+    run_knn("s2_worldcover_2021_FR_100tiles_allpixels (1).csv")
+    #run_cnn("s2_worldcover_2021_FR_100tiles_allpixels.csv")

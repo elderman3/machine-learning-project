@@ -2,3 +2,8 @@
 .idea
 project_id.txt
 *.csv
+*.tif
+*.npz
+*.pt 
+*.png
+*.joblib
